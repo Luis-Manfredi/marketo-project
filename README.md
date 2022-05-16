@@ -7,7 +7,7 @@ What this app does at the momment:
 * Set a custom list name given by the user.
 * Add items to the list.
 * Save items in device memory.
-* Clear list items in New List screen.
+* Clear list items in My New List screen.
 * Delete the complete list in home (My List) screen after user confirmation.
 
 TODO:
