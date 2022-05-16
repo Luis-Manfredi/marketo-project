@@ -1,6 +1,6 @@
 # marketo
 
-A new Flutter project made by Luis Manfredi. This app consist on research and implement several widgets and state management to a new design.
+A new Flutter project made by Luis Manfredi. This app consist on research and implement new several widgets and state management to a new design.
 This is a shopping list app.
 
 What this app does at the momment:
