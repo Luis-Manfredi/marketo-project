@@ -1,6 +1,18 @@
 # marketo
 
-A new Flutter project.
+A new Flutter project made by Luis Manfredi. This app consist on research and implement several widgets and state management to a new design.
+This is a shopping list app.
+
+What this app does at the momment:
+* Set a custom list name given by the user.
+* Add items to the list.
+* Save items in device memory.
+* Clear list items in New List screen.
+* Delete the complete list in home (My List) screen after user confirmation.
+
+TODO:
+* Save list in device storage.
+* User ability to edit lists.
 
 ## Getting Started
 
