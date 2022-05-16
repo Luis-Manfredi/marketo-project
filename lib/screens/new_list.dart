@@ -8,6 +8,7 @@ import 'package:marketo/constants/colors.dart';
 import 'package:marketo/data/list_item_class.dart';
 import 'package:marketo/data/lists_class.dart';
 import 'package:marketo/data/user_data.dart';
+import 'package:marketo/screens/home.dart';
 
 class NewList extends StatefulWidget {
   const NewList({ Key? key }) : super(key: key);
@@ -26,9 +27,6 @@ class _NewListState extends State<NewList> {
   late TextEditingController _controller;
   final listKey = GlobalKey<State>();
 
-  // List<String> itemsNames = [];
-  // List<String> itemsQuantities = [];
-  // List<String> itemsWeights = [];
   List<ListItem> productsList = products;
 
   @override
@@ -36,7 +34,7 @@ class _NewListState extends State<NewList> {
     super.initState();
     _controller = TextEditingController();
 
-    name = UserSimplePreferences.getListName() ?? 'My New List';
+    // name = UserSimplePreferences.getListName() ?? 'My New List';
   
   }
 
@@ -68,7 +66,14 @@ class _NewListState extends State<NewList> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            if (productsList.isEmpty){
+              Navigator.pop(context);
+            }
+            else{
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+            }
+          },
         ),
         centerTitle: true,
         title: Text(name, style: TextStyle(color: white, fontWeight: FontWeight.w400)),
@@ -254,23 +259,33 @@ class _NewListState extends State<NewList> {
 }
 
   //Clear List function
-  void clear(){
+  void clear() async {
     setState(() {
       listName = 'My New List';
       name = 'My New List';
       products.clear();
     });
+
+    await UserSimplePreferences.setListName(name);
   }
 
   //Save List function
   void save() async {
-    await UserSimplePreferences.setListName(name);
-    setState(() {
-      userLists.add(
-        UserList(name: name, products: products)
-      );
-    });
+    // await UserSimplePreferences.setListName(name);
 
+    if (productsList.isNotEmpty) {
+      final List<ListItem> list = [];
+
+      for (var item in productsList){
+        list.add(item);
+      }
+
+      setState(() {
+        userLists.add(
+          UserList(name: name, products: list)
+        );
+      });
+    }
   }
 
   //Submit function

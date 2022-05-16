@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:marketo/components/close_button.dart';
 import 'package:marketo/constants/colors.dart';
 import 'package:marketo/data/list_item_class.dart';
+import 'package:marketo/data/lists_class.dart';
 
 class AddProductButton extends StatefulWidget {
   const AddProductButton({
@@ -214,6 +215,10 @@ class _AddProductButtonState extends State<AddProductButton> {
           name: _nameController.text.toString(), 
           quantity: _quantityController.text.toString(), 
           weight: _weightController.text.toString())
+      );
+
+      productsListNames.add(
+        _nameController.text.toString()
       );
 
       log('product added');
